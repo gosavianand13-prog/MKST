@@ -1,0 +1,675 @@
+:root{
+    --bg:#f3f4f6;
+    --accent-red:#ef4444;
+    --accent-blue:#2563eb;
+    --text-main:#111827;
+    --text-muted:#6b7280;
+    --card-bg:#ffffff;
+    --border-soft:#e5e7eb;
+}
+*{
+    box-sizing:border-box;
+    font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+}
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text-main);
+    -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+
+
+/* NAVBAR with Logo */
+.navbar{
+    background:#0f172a;
+    padding:0.4rem 1rem;
+    box-shadow:0 4px 10px rgba(15,23,42,0.4);
+    border-bottom: 3px solid #d4a017;  Golden Divider 
+}
+
+/*
+.navbar {
+    background: #0f172a;
+    padding: 0.4rem 1rem;
+    box-shadow: 0 4px 10px rgba(15,23,42,0.4);
+    border-bottom: 3px solid #d4a017;  Golden Divider 
+}
+*/
+
+
+.brand-wrap{display:flex;align-items:center;gap:10px}
+.brand-logo{
+    width:52px;height:52px;border-radius:50%;overflow:hidden;flex:0 0 52px;
+    display:flex;align-items:center;justify-content:center;
+    background:#ffffff;padding:4px;
+    box-shadow:0 4px 14px rgba(15,23,42,0.6);
+}
+.brand-logo img{width:100%;height:100%;object-fit:contain;display:block;border-radius:50%}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-text .line1{
+    font-size:1.8rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#f9fafb;
+}
+
+
+.brand-text .line2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #d4a017, #ffdd44);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.brand-text .line2 .white-text {
+    background: linear-gradient(30deg, #ffd700, #fff8dc, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* NAV links + hover */
+.nav-links .nav-link{
+    color:#d4a017;
+    padding:.4rem .7rem;
+    font-size:1.2rem;
+}
+
+/* Attractive hover */
+.nav-links .nav-link {
+    position: relative;
+    color: #e5e7eb !important;
+    font-weight: 500;
+    transition: color 0.25s ease;
+}
+
+.nav-links .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    width: 70%;
+    height: 3px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+    box-shadow: 0 0 10px rgba(37,99,235,0.5);
+    transition: transform 0.28s ease;
+}
+
+.nav-links .nav-link:hover {
+    color: #ffffff !important;
+}
+
+.nav-links .nav-link:hover::after,
+.nav-links .nav-link:focus::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+
+/* SIMPLE & PROFESSIONAL – RUNNING UPDATE BAR */
+.live-updates{
+    width:100%;
+    background:#fefce8;                 /* हलका क्रीम */
+    border-top:1px solid #e5e7eb;
+    border-bottom:1px solid #e5e7eb;
+    padding:4px 0;                      /* डेस्कटॉपवर थोडंसं उंच */
+    display:flex;
+    align-items:center;
+    gap:10px;
+    overflow:hidden;
+    font-size:0.9rem;
+    color:#b91c1c;                      /* तुम्ही मागितलेला डार्क रेड टेक्स्ट */
+    border-bottom: 3px solid #d4a017;
+}
+
+/* डावीकडचा LIVE टॅग */
+.live-updates::before{
+    content:"LIVE अपडेट";
+    margin-left:12px;
+    padding:2px 10px;
+    border-radius:999px;
+    font-size:0.8rem;
+    font-weight:600;
+    background:#dc2626;
+    color:#fff;
+}
+
+/* चालणारा मजकूर */
+.live-updates span{
+    display:inline-block;
+    padding-left:20px;
+    white-space:nowrap;
+    transform:translateX(0);             /* सुरूवातीपासूनच दिसेल */
+    animation:scrollText 16s linear infinite;
+}
+
+/* स्क्रोल – आता 0 ते -100 */
+@keyframes scrollText{
+    from{ transform:translateX(0); }
+    to{   transform:translateX(-100%); }
+}
+
+/* मोबाईलवर LIVE अपडेट बार थोडा स्लिम करा */
+@media (max-width: 600px) {
+    .live-updates{
+        padding: 2px 0;          /* बारची उंची कमी */
+        font-size: 0.80rem;      /* टेक्स्ट थोडं लहान */
+    }
+
+    .live-updates::before{
+        margin-left: 8px;
+        padding: 1px 7px;        /* LIVE टॅग छोटा */
+        font-size: 0.72rem;
+    }
+
+    .live-updates span{
+        padding-left: 10px;      /* डावीकडचा gap कमी */
+    }
+}
+
+
+/* HERO – medium dark background */
+.hero {
+    padding: 86px 0 40px;
+    background:
+        radial-gradient(at 10% 0%, rgba(37,99,235,0.28) 0%, transparent 55%),
+        radial-gradient(at 90% 100%, rgba(239,68,68,0.25) 0%, transparent 55%),
+        linear-gradient(135deg, #020617 0%, #111827 45%, #1f2937 100%);
+    color: #f9fafb;
+    padding-top: 1.5rem;
+}
+.hero .title{
+    font-size:clamp(1.9rem,4vw,2.6rem);
+    font-weight:800;
+    margin:0 0 .6rem;
+    display:inline-block;
+    padding-bottom:6px;
+    position:relative;
+    color:#f9fafb;
+}
+.hero .title::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:55%;
+    height:3px;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--accent-red),var(--accent-blue));
+    box-shadow:0 3px 10px rgba(37,99,235,0.55);
+}
+.hero p.lead{
+    opacity:.95;
+    margin-bottom:1rem;
+    color:#e5e7eb;
+}
+
+.hero .cta{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:12px
+}
+.hero-card h5 {
+    font-size: 1rem;
+    font-weight: 600    ;
+    color: #808587;
+    margin-bottom: 10px;
+    background: none !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.18);
+}
+
+
+.btn-primary-custom{
+    background:linear-gradient(90deg,var(--accent-red),var(--accent-blue));
+    border:none;
+    color:#fff;
+    padding:.6rem 1.1rem;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.92rem;
+    box-shadow:0 8px 24px rgba(37,99,235,0.35);
+}
+
+.btn-primary-custom:hover{
+    box-shadow: 0 8px 28px rgba(21,128,61,0.55);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.btn-secondary-custom{
+   background:linear-gradient(90deg,var(--accent-red),var(--accent-blue));
+    border:none;
+    color:#fff;
+    padding:.6rem 1.1rem;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.92rem;
+    box-shadow:0 8px 24px rgba(37,99,235,0.35);
+}
+.btn-secondary-custom:hover{
+/*    background:#f9fafb;*/
+    box-shadow: 0 8px 28px rgba(21,128,61,0.55);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.hero-card{
+    background:#ffffff;
+    padding:12px 12px 12px 12px;
+    border-radius:18px;
+    border:1px solid var(--border-soft);
+    box-shadow:0 10px 28px rgba(148,163,184,0.45);
+    border: 3px solid #d4a017;
+}
+
+
+/* Generic cards */
+.section-padding{padding:46px 0 38px}
+h2.mb-3{
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #1a1a1a;
+    font-size: 1.18rem;
+    position: relative;
+    border-bottom: linear-gradient(90deg, #b45309, #fde68a);
+}
+
+
+
+/* ABOUT Info Cards Upgrade */
+.info-card {
+    background: rgba(255,255,255,0.75);
+    border-radius: 18px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Hover lift */
+.info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 38px rgba(0,0,0,0.18);
+}
+
+/* Card Titles */
+.info-card h5 {
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #1a1a1a;
+    font-size: 1.18rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+/* Gradient Underline */
+.info-card h5::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #b45309, #fde68a);
+}
+
+
+/* Text improvement */
+.info-card p,
+.info-card li {
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+/* Mobile optimization */
+@media(max-width: 600px) {
+    .info-card {
+        padding: 12px 14px;
+        border-radius: 14px;
+    }
+    .info-card h5 {
+        font-size: 1.05rem;
+    }
+    .info-card h5::after {
+        width: 50%;
+    }
+}
+
+
+
+.muted{color:var(--text-muted);}
+
+/* Officers card with photo */
+.officer-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    background:#ffffff;
+    margin:auto;
+    padding:18px 20px;
+    border-radius:20px;
+    border:1px solid rgba(0,0,0,0.06);
+    box-shadow:
+        0 4px 6px rgba(0,0,0,0.05),
+        0 10px 25px rgba(0,0,0,0.10);
+    transition: all .25s ease-in-out;
+}
+
+.officer-card:hover{
+    transform:translateY(-5px);
+    box-shadow:
+        0 6px 10px rgba(0,0,0,0.06),
+        0 14px 32px rgba(0,0,0,0.18);
+}
+
+.officer-photo{
+    width:100px;
+    height:100px;
+    border-radius:12px;
+    overflow:hidden;
+    flex:0 0 86px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#e5e7eb;
+    border: 1px solid gold;
+}
+
+.officer-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    flex-shrink:0;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+.officer-meta .name{
+    font-size:1.25rem;
+    font-weight:800;
+    color:#0f172a;
+}
+
+.officer-meta .role{
+    font-size:1rem;
+    font-weight:600;
+    margin-top:3px;
+    color:#4b5563;
+}
+
+.officer-meta .mobile{
+    margin-top:6px;
+    font-size:.95rem;
+    color:#6b7280;
+}
+
+
+
+
+
+
+
+/* Tabs for Members */
+.members-nav .nav-link{
+    border-radius:999px;
+    padding:6px 14px;
+    font-size:0.88rem;
+    border:1px solid transparent;
+    color:var(--text-muted);
+}
+.members-nav .nav-link.active{
+    background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));
+    color:#ffffff !important;
+    border-color:transparent;
+    box-shadow:0 8px 18px rgba(37,99,235,0.35);
+}
+.members-nav .nav-link:not(.active):hover{
+    background:#e5e7eb;
+    color:var(--text-main);
+}
+
+/* Members table */
+.table-wrapper{
+    background:#ffffff;
+    border-radius:12px;
+    padding:10px;
+    border:1px solid var(--border-soft);
+    box-shadow:0 6px 18px rgba(148,163,184,0.35);
+    margin-top:8px;
+}
+.table-custom{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.92rem;
+    color:var(--text-main);
+}
+.table-custom thead{
+    background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));
+    color:#ffffff;
+}
+.table-custom th,
+.table-custom td{
+    padding:8px 11px;
+    border-bottom:1px solid #e5e7eb;
+}
+.table-custom th{
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+}
+.table-custom tbody tr:nth-child(odd){
+    background:#ffffff;
+}
+.table-custom tbody tr:nth-child(even){
+    background:#f9fafb;
+}
+.table-custom tbody tr:hover{
+    background:#e5efff;
+}
+.name-cell{
+    font-weight:600;
+}
+
+/* discipline + vision columns */
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+@media(max-width:900px){
+    .info-grid{grid-template-columns:1fr}
+}
+
+.contact-card{
+    background:#ffffff;
+    padding:16px;
+    border-radius:12px;
+    border:1px solid var(--border-soft);
+    box-shadow:0 6px 18px rgba(148,163,184,0.35);
+}
+
+footer{
+    border-top:1px solid var(--border-soft);
+    padding:12px 0;
+    margin-top:20px;
+    color:var(--text-muted);
+    background:#f9fafb;
+}
+
+
+
+
+/* ENQUIRY SECTION */
+.enquiry-section{
+    background:#eef2ff;
+}
+.enquiry-card{
+    background:#ffffff;
+    padding:18px 18px 16px 18px;
+    border-radius:14px;
+    border:1px solid var(--border-soft);
+    box-shadow:0 10px 26px rgba(148,163,184,0.5);
+}
+.form-control-custom{
+    border-radius:10px;
+    border:1px solid #d1d5db;
+    font-size:0.9rem;
+}
+.form-control-custom:focus{
+    border-color:#d4a017;
+    box-shadow:0 0 0 2px rgba(212,160,23,0.25);
+}
+.enquiry-btn{
+    background:linear-gradient(90deg,#d4a017,#ffdd44);
+    border:none;
+    color:#111827;
+    font-weight:700;
+    padding:0.55rem 1.2rem;
+    border-radius:999px;
+    font-size:0.92rem;
+    box-shadow:0 10px 26px rgba(212,160,23,0.45);
+}
+.enquiry-btn:hover{
+    filter:brightness(0.95);
+}
+.very-small{
+    font-size:0.78rem;
+}
+
+
+
+.whatsapp-contact {
+    display: inline-block;
+    background: #25D366;
+    color: #ffffff !important;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 1rem;
+    text-align: center;
+    transition: 0.3s ease;
+    box-shadow: 0 0 10px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-contact:hover {
+    background: #1fa855;
+    box-shadow: 0 0 14px rgba(37, 211, 102, 0.9);
+    transform: scale(1.05);
+}
+
+
+/* WhatsApp Icon Styling */
+.whatsapp-icon {
+    font-size: 22px;
+    margin-right: 6px;
+    vertical-align: middle;
+    color: #25D366 !important;
+    transition: 0.3s ease;
+}
+
+.whatsapp-contact:hover .whatsapp-icon {
+    color: #fff !important;
+/*    filter: brightness(500%);*/
+}
+
+
+
+
+/* CONTACT CARD – PREMIUM LOOK */
+#contact .contact-card{
+    background: linear-gradient(135deg,#ffffff 10%, #fef3c7 100%);
+    border-radius: 18px;
+    padding: 18px 20px;
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.04),
+        0 10px 26px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+/* डाव्या बाजूला गोल्ड पट्टी */
+#contact .contact-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:16px;
+    bottom:16px;
+    width:4px;
+    border-radius:0 10px 10px 0;
+    background:linear-gradient(180deg,#b45309,#fbbf24);
+}
+
+/* वरचा ट्रस्टचा नाव */
+#contact .contact-card strong{
+    display:block;
+    font-size:1.2rem;
+    font-weight:800;
+    color:#111827;
+    margin-bottom:6px;
+}
+
+/* मोबाईल / ई-मेल ओळी */
+#contact .contact-card p{
+    margin:2px 0;
+    font-size:0.95rem;
+    line-height:1.4;
+}
+
+/* मोबाईल आणि ई-मेलला थोडा वेगळा रंग */
+#contact .contact-card p:nth-of-type(1),
+#contact .contact-card p:nth-of-type(2){
+    color:#374151;
+    font-weight:600;
+}
+
+/* शेवटच्या स्पष्टीकरण मजकुरासाठी सौम्य रंग */
+#contact .contact-card p:last-of-type{
+    margin-top:8px;
+    color:#4b5563;
+    font-size:0.96rem;
+}
+
+
+
+/* SECTION HEADINGS – Clean Center Box (Option R) */
+section h2.mb-3{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+/*    background: #ffc299;*/
+    font-size: 1.3rem;
+    font-weight: 800px;
+    color:#2c1b07;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.25)
+   
+}
+
+/* दोन्ही बाजूला रंगीत vertical bar | ... | */
+section h2.mb-3::before,
+section h2.mb-3::after{
+    content: "";
+    display: block;
+    width: 2px;
+    height: 18px;
+    border-radius: 999px;
+    background: linear-gradient(180deg,#ef4444,#2563eb);
+}
+
